@@ -15,43 +15,47 @@ const barbearia = {
         { id: 5, tipo: "Barba Zero", valor: 15 },
     ],
     estaAberto: true,
-};
+}; 
   
-  
-function buscaCortePorId(id) {
-    for(let i = 0; i <barbearia.cortes.length; i++){
+function buscaCortePorId(id){
+    for(let i = 0; i < barbearia.cortes.length; i++){
         if(id == barbearia.cortes[i].id){
             return barbearia.cortes[i];
         } 
     }
-    return "corte não encontrado"
+    return "corte não encontrado";
 }
 
-function buscaBarbaPorId(id) {
-    for(let i = 0; i <barbearia.barbas.length; i++){
+
+function buscaBarbaPorId(id){
+    for(let i = 0; i < barbearia.barbas.length; i++){
         if(id == barbearia.barbas[i].id){
             return barbearia.barbas[i];
         } 
     }
-    return "Barba não encontrada"
+    return "Barba não encontrada";
 }
 
-function verificaStatusBarbearia() {
+
+function verificaStatusBarbearia(){
     if(barbearia.estaAberto == true){
         return "Estamos abertos";
     }
-    return "Estamos fechados"
+    return "Estamos fechados";
 }
 
-function retornaTodosCortes() {
-    return barbearia.cortes
+
+function retornaTodosCortes(){
+    return barbearia.cortes;
 }
 
-function retornaTodasBarbas() {
-    return barbearia.barbas
+
+function retornaTodasBarbas(){
+    return barbearia.barbas;
 }
 
-function criaPedido(nomeCliente, corteId, barbaId) {
+
+function criaPedido(nomeCliente, corteId, barbaId){
     let pedido = 
     {nome: nomeCliente, 
     pedidoCorte: buscaCortePorId,
@@ -77,28 +81,20 @@ function criaPedido(nomeCliente, corteId, barbaId) {
  }
 
 
- function atualizarServico(lista, id, tipo, valor) 
-    // let novoId = id;
-    
-//     for (let i = 0; i < lista.length; i++) {
-//         if(lista[i].id == id){
-//         lista[i].id.pull(novoId); 
-//         if(lista[i].id == id){
-//         lista[i].tipo.pull(tipo);
-//         if(lista[i].id == id){
-//         lista[i].valor.pull(valor);
-//         break;
-//         }
-//     } 
-// }
-//     } 
-// return lista;
-// }
-
-function calculaTotal(pedido) {
+ function atualizarServico(lista, id, valor, tipo){
+    for(let i = 0; i <lista.length; i++){
+        if(id == lista[i].id){
+            lista[i].valor = valor;
+            lista[i].tipo = tipo;
+            return lista;
+        }
+    }
+ } 
+ 
+ 
+function calculaTotal(pedido){
     let precoCorte = pedido.pedidoCortePreco;
     let precoBarba = pedido.pedidoBarbaPreco;
-    console.log(pedido)
     return  precoBarba + precoCorte;
 }
   
